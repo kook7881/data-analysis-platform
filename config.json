@@ -1,0 +1,47 @@
+{
+  "dataScreen": {
+    "title": "全国销售数据可视化大屏",
+    "subtitle": "DATA VISUALIZATION DASHBOARD",
+    "updateInterval": 30000,
+    "transactionInterval": 3000,
+    "mapCenter": [105, 36],
+    "mapZoom": 1.2,
+    "colors": {
+      "primary": "#00D9FF",
+      "secondary": "#0052D9",
+      "accent": "#FFD700",
+      "background": "#0A1A3A",
+      "cardBackground": "rgba(0, 0, 0, 0.4)",
+      "text": "#FFFFFF",
+      "textSecondary": "#9AA3B8"
+    },
+    "animation": {
+      "enableBackground": true,
+      "enableCardHover": true,
+      "enableMapEffects": true,
+      "scrollSpeed": 30
+    },
+    "display": {
+      "showProvinceRanking": true,
+      "showRealtimeTransactions": true,
+      "showSalesTrend": true,
+      "showRegionRanking": true,
+      "maxTransactions": 10,
+      "maxProvinceRanking": 8
+    }
+  },
+  "api": {
+    "baseURL": "http://localhost:5000/api",
+    "timeout": 10000,
+    "endpoints": {
+      "dataScreen": "/dataScreen",
+      "transactions": "/dataScreen/transactions"
+    }
+  },
+  "map": {
+    "dataSource": "https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json",
+    "fallbackMode": "simple",
+    "enableInteraction": true,
+    "showLegend": true
+  }
+} 

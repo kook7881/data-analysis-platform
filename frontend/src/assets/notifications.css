@@ -1,0 +1,485 @@
+/* 通知中心样式 */
+
+.notification-center {
+  position: relative;
+}
+
+/* 通知按钮 */
+.notification-trigger {
+  position: relative;
+}
+
+.notification-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.notification-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--primary-color);
+  color: var(--text-primary);
+}
+
+.notification-btn.has-unread {
+  color: var(--primary-color);
+  animation: pulse 2s infinite;
+}
+
+.notification-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* 通知徽章 */
+.notification-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+  animation: bounce 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% { transform: translate3d(0, 0, 0); }
+  40%, 43% { transform: translate3d(0, -4px, 0); }
+  70% { transform: translate3d(0, -2px, 0); }
+  90% { transform: translate3d(0, -1px, 0); }
+}
+
+/* 通知下拉面板 */
+.notification-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 400px;
+  max-height: 600px;
+  background: rgba(30, 41, 59, 0.98);
+  border: 1px solid rgba(79, 172, 254, 0.3);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  z-index: 1000;
+  animation: slideDown 0.3s ease-out;
+  overflow: hidden;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 通知头部 */
+.notification-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-bottom: 1px solid rgba(79, 172, 254, 0.2);
+  background: rgba(79, 172, 254, 0.05);
+}
+
+.notification-header h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.notification-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.mark-all-btn {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: transparent;
+  border: 1px solid var(--primary-color);
+  border-radius: var(--radius-sm);
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.mark-all-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+.close-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* 通知过滤器 */
+.notification-filters {
+  display: flex;
+  padding: var(--spacing-md) var(--spacing-lg);
+  gap: var(--spacing-xs);
+  border-bottom: 1px solid rgba(79, 172, 254, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.filter-btn {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  white-space: nowrap;
+}
+
+.filter-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.filter-btn.filter-active {
+  background: rgba(79, 172, 254, 0.1);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* 通知列表 */
+.notification-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* 加载状态 */
+.notification-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-xl);
+  color: var(--text-muted);
+}
+
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-top: 2px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 空状态 */
+.notification-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xxl);
+  text-align: center;
+}
+
+.empty-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.6;
+}
+
+.empty-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.notification-empty h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.notification-empty p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* 通知项 */
+.notification-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.notification-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.notification-item.notification-unread {
+  background: rgba(79, 172, 254, 0.05);
+}
+
+.notification-item.notification-important {
+  border-left: 3px solid var(--warning-color);
+}
+
+/* 通知图标 */
+.notification-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.notification-success .notification-icon {
+  color: var(--success-color);
+}
+
+.notification-warning .notification-icon {
+  color: var(--warning-color);
+}
+
+.notification-error .notification-icon {
+  color: var(--error-color);
+}
+
+.notification-info .notification-icon {
+  color: var(--primary-color);
+}
+
+.notification-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* 通知内容 */
+.notification-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification-title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.4;
+}
+
+.important-badge {
+  padding: 2px 6px;
+  background: rgba(251, 191, 36, 0.2);
+  color: var(--warning-color);
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: var(--radius-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.notification-message {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.notification-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.notification-category {
+  padding: 2px 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xs);
+  font-weight: 500;
+}
+
+.notification-time {
+  font-weight: 400;
+}
+
+/* 未读指示器 */
+.unread-indicator {
+  position: absolute;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  width: 8px;
+  height: 8px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(79, 172, 254, 0.5);
+}
+
+/* 加载更多 */
+.load-more {
+  padding: var(--spacing-lg);
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.load-more-btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.load-more-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* 遮罩层 */
+.notification-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .notification-dropdown {
+    width: 320px;
+    max-width: calc(100vw - 32px);
+  }
+  
+  .notification-header {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+  
+  .notification-filters {
+    padding: var(--spacing-sm) var(--spacing-md);
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .notification-filters::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .notification-item {
+    padding: var(--spacing-md);
+  }
+  
+  .notification-title {
+    font-size: 0.9rem;
+  }
+  
+  .notification-message {
+    font-size: 0.85rem;
+  }
+}
+
+/* 滚动条样式 */
+.notification-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notification-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.notification-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.notification-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
