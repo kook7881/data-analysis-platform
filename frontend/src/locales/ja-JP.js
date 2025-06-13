@@ -1,6 +1,7 @@
 export default {
   // 共通
   common: {
+    appName: 'データ分析プラットフォーム',
     confirm: '確認',
     cancel: 'キャンセル',
     save: '保存',
@@ -32,9 +33,10 @@ export default {
   nav: {
     home: 'ホーム',
     dashboard: 'ダッシュボード',
-    analysis: 'データ分析',
+    analysis: '分析',
     reports: 'レポート',
-    dataWarehouse: 'データウェアハウス',
+    dataScreen: 'データ画面',
+    dataWarehouse: 'データ倉庫',
     settings: '設定',
     profile: 'プロフィール',
     logout: 'ログアウト'
@@ -205,6 +207,7 @@ export default {
 
   // ユーザーメニュー
   user: {
+    defaultName: 'ユーザー',
     profile: 'プロフィール',
     settings: '設定',
     help: 'ヘルプ',

@@ -361,13 +361,19 @@ export const useSettingsStore = defineStore('settings', {
     // 应用语言
     applyLanguage(locale) {
       try {
+        console.log('开始应用语言:', locale)
         // 动态导入i18n模块
         import('../i18n/index.js').then(({ setLanguage }) => {
           const success = setLanguage(locale)
           if (success) {
-            console.log('语言已应用:', locale)
+            console.log('语言已成功应用:', locale)
             // 更新HTML lang属性
             document.documentElement.lang = locale
+
+            // 触发全局事件，通知其他组件语言已变化
+            window.dispatchEvent(new CustomEvent('languageChanged', {
+              detail: { locale }
+            }))
           } else {
             console.error('不支持的语言:', locale)
           }

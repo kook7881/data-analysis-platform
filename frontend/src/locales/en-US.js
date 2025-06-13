@@ -1,6 +1,7 @@
 export default {
   // Common
   common: {
+    appName: 'Data Analysis Platform',
     confirm: 'Confirm',
     cancel: 'Cancel',
     save: 'Save',
@@ -32,8 +33,9 @@ export default {
   nav: {
     home: 'Home',
     dashboard: 'Dashboard',
-    analysis: 'Data Analysis',
+    analysis: 'Analysis',
     reports: 'Reports',
+    dataScreen: 'Data View',
     dataWarehouse: 'Data Warehouse',
     settings: 'Settings',
     profile: 'Profile',
@@ -205,6 +207,7 @@ export default {
 
   // User menu
   user: {
+    defaultName: 'User',
     profile: 'Profile',
     settings: 'Settings',
     help: 'Help',

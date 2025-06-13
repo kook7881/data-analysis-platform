@@ -1,4 +1,5 @@
 import { createI18n } from 'vue-i18n'
+import { nextTick } from 'vue'
 import zhCN from '../locales/zh-CN.js'
 import enUS from '../locales/en-US.js'
 import jaJP from '../locales/ja-JP.js'
@@ -38,8 +39,11 @@ const i18n = createI18n({
 // 切换语言的函数
 export function setLanguage(locale) {
   if (messages[locale]) {
+    console.log('切换语言到:', locale)
+
+    // 立即更新i18n实例的语言
     i18n.global.locale.value = locale
-    
+
     // 保存到localStorage
     try {
       const savedSettings = localStorage.getItem('userSettings')
@@ -49,13 +53,22 @@ export function setLanguage(locale) {
       }
       settings.language = locale
       localStorage.setItem('userSettings', JSON.stringify(settings))
-      console.log('Language changed to:', locale)
+      console.log('语言设置已保存到localStorage:', locale)
     } catch (error) {
-      console.error('Failed to save language setting:', error)
+      console.error('保存语言设置失败:', error)
     }
-    
+
+    // 更新HTML文档语言属性
+    document.documentElement.lang = locale
+
+    // 强制Vue重新渲染所有使用i18n的组件
+    nextTick(() => {
+      console.log('语言切换完成，当前语言:', i18n.global.locale.value)
+    })
+
     return true
   }
+  console.error('不支持的语言:', locale)
   return false
 }
 

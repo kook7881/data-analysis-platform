@@ -1,6 +1,7 @@
 export default {
   // 通用
   common: {
+    appName: '数据分析平台',
     confirm: '确认',
     cancel: '取消',
     save: '保存',
@@ -34,6 +35,7 @@ export default {
     dashboard: '数据仪表盘',
     analysis: '数据分析',
     reports: '报表管理',
+    dataScreen: '数字大屏',
     dataWarehouse: '数字大厦',
     settings: '设置',
     profile: '个人资料',
@@ -205,6 +207,7 @@ export default {
 
   // 用户菜单
   user: {
+    defaultName: '用户',
     profile: '个人资料',
     settings: '设置',
     help: '帮助',

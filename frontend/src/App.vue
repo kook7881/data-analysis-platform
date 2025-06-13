@@ -11,7 +11,7 @@
                 <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" fill="currentColor"/>
               </svg>
             </div>
-            <span class="logo-text">数据分析平台</span>
+            <span class="logo-text">{{ t('common.appName') || '数据分析平台' }}</span>
           </router-link>
         </div>
 
@@ -19,23 +19,23 @@
         <div class="nav-links">
           <router-link to="/" exact-active-class="active" class="nav-link">
             <span class="link-icon">🏠</span>
-            <span class="link-text">首页</span>
+            <span class="link-text">{{ t('nav.home') || '首页' }}</span>
           </router-link>
           <router-link to="/dashboard" active-class="active" class="nav-link">
             <span class="link-icon">📊</span>
-            <span class="link-text">数据仪表盘</span>
+            <span class="link-text">{{ t('nav.dashboard') || '数据仪表盘' }}</span>
           </router-link>
           <router-link to="/analysis" active-class="active" class="nav-link">
             <span class="link-icon">📈</span>
-            <span class="link-text">数据分析</span>
+            <span class="link-text">{{ t('nav.analysis') || '数据分析' }}</span>
           </router-link>
           <router-link to="/reports" active-class="active" class="nav-link">
             <span class="link-icon">📋</span>
-            <span class="link-text">报表管理</span>
+            <span class="link-text">{{ t('nav.reports') || '报表管理' }}</span>
           </router-link>
           <router-link to="/datascreen" active-class="active" class="nav-link">
             <span class="link-icon">🖥️</span>
-            <span class="link-text">数字大屏</span>
+            <span class="link-text">{{ t('nav.dataScreen') || '数字大屏' }}</span>
           </router-link>
         </div>
 
@@ -53,8 +53,8 @@
                 <span>{{ (userStore.getUser?.username || 'U').charAt(0).toUpperCase() }}</span>
               </div>
               <div class="user-info-inline">
-                <span class="user-name">{{ userStore.getUser?.username || '用户' }}</span>
-                <span class="user-role">{{ userStore.getUser?.role === 'admin' ? '管理员' : '普通用户' }}</span>
+                <span class="user-name">{{ userStore.getUser?.username || t('user.defaultName') || '用户' }}</span>
+                <span class="user-role">{{ userStore.getUser?.role === 'admin' ? (t('user.role.admin') || '管理员') : (t('user.role.user') || '普通用户') }}</span>
               </div>
               <svg class="dropdown-icon" :class="{ 'rotated': showUserMenu }" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="m19.5 8.25-7.5 7.5-7.5-7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -69,9 +69,9 @@
                     <span>{{ (userStore.getUser?.username || 'U').charAt(0).toUpperCase() }}</span>
                   </div>
                   <div class="user-details">
-                    <div class="user-name">{{ userStore.getUser?.username || '用户' }}</div>
+                    <div class="user-name">{{ userStore.getUser?.username || t('user.defaultName') || '用户' }}</div>
                     <div class="user-email">user@example.com</div>
-                    <div class="user-role badge badge-primary">{{ userStore.getUser?.role === 'admin' ? '管理员' : '普通用户' }}</div>
+                    <div class="user-role badge badge-primary">{{ userStore.getUser?.role === 'admin' ? (t('user.role.admin') || '管理员') : (t('user.role.user') || '普通用户') }}</div>
                   </div>
                 </div>
 
@@ -82,7 +82,7 @@
                     <svg class="menu-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    <span>个人资料</span>
+                    <span>{{ t('user.profile') || '个人资料' }}</span>
                   </router-link>
 
                   <router-link to="/settings" class="menu-item" @click="closeUserMenu">
@@ -90,7 +90,7 @@
                       <path d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a6.759 6.759 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                       <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    <span>设置</span>
+                    <span>{{ t('user.settings') || '设置' }}</span>
                   </router-link>
 
                   <div class="menu-divider"></div>
@@ -99,7 +99,7 @@
                     <svg class="menu-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    <span>退出登录</span>
+                    <span>{{ t('user.logout') || '退出登录' }}</span>
                   </div>
                 </div>
               </div>
@@ -125,10 +125,13 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useUserStore, useSettingsStore } from './store'
 import { useRouter } from 'vue-router'
 import GlobalSearch from './components/GlobalSearch.vue'
 import NotificationCenter from './components/NotificationCenter.vue'
+
+const { t } = useI18n()
 
 const userStore = useUserStore()
 const settingsStore = useSettingsStore()
@@ -181,6 +184,19 @@ watch(
   }
 )
 
+// 监听语言变化
+watch(
+  () => settingsStore.language,
+  (newLanguage) => {
+    console.log('语言变化监听器触发:', newLanguage)
+    settingsStore.applyLanguage(newLanguage)
+    // 延迟调整导航栏布局，确保语言已切换
+    setTimeout(() => {
+      adjustNavLayout()
+    }, 100)
+  }
+)
+
 function checkAuthStatus() {
   isLoggedIn.value = userStore.isLoggedIn || !!localStorage.getItem('token')
   console.log('检查登录状态:', isLoggedIn.value)
@@ -215,6 +231,29 @@ function logout() {
   showUserMenu.value = false
 }
 
+// 调整导航栏布局
+function adjustNavLayout() {
+  const navLinks = document.querySelector('.nav-links')
+  const navContainer = document.querySelector('.nav-container')
+
+  if (!navLinks || !navContainer) return
+
+  // 检查导航链接是否溢出
+  const containerWidth = navContainer.offsetWidth
+  const logoWidth = document.querySelector('.nav-logo')?.offsetWidth || 0
+  const actionsWidth = document.querySelector('.nav-actions')?.offsetWidth || 0
+  const availableWidth = containerWidth - logoWidth - actionsWidth - 40 // 40px for margins
+
+  const linksWidth = navLinks.scrollWidth
+
+  if (linksWidth > availableWidth) {
+    // 如果溢出，减小字体和间距
+    navLinks.classList.add('nav-compact')
+  } else {
+    navLinks.classList.remove('nav-compact')
+  }
+}
+
 // 快捷键处理
 const handleKeydown = (event) => {
   // Ctrl/Cmd + K 打开搜索
@@ -228,11 +267,16 @@ const handleKeydown = (event) => {
 onMounted(() => {
   document.addEventListener('click', closeMenuOnOutsideClick)
   document.addEventListener('keydown', handleKeydown)
+  window.addEventListener('resize', adjustNavLayout)
+
+  // 初始化时调整布局
+  setTimeout(adjustNavLayout, 500)
 })
 
 onBeforeUnmount(() => {
   document.removeEventListener('click', closeMenuOnOutsideClick)
   document.removeEventListener('keydown', handleKeydown)
+  window.removeEventListener('resize', adjustNavLayout)
 })
 </script>
 
@@ -275,6 +319,7 @@ onBeforeUnmount(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 /* Logo样式 */
@@ -321,25 +366,30 @@ onBeforeUnmount(() => {
 /* 导航链接 */
 .nav-links {
   display: flex;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-xs);
   flex: 1;
   justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .nav-link {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-md) var(--spacing-lg);
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
   border-radius: var(--radius-md);
   color: var(--text-secondary);
   font-weight: 500;
-  font-size: 14px;
+  font-size: 13px;
   transition: var(--transition-normal);
   position: relative;
   overflow: hidden;
   text-decoration: none;
   white-space: nowrap;
+  flex-shrink: 1;
+  min-width: 0;
+  max-width: 140px;
 }
 
 .nav-link::before {
@@ -385,8 +435,12 @@ onBeforeUnmount(() => {
 
 .link-text {
   font-weight: 600;
-  flex-shrink: 0;
+  flex-shrink: 1;
   display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
 }
 
 /* 右侧操作区域 */
@@ -717,6 +771,85 @@ onBeforeUnmount(() => {
   }
 }
 
+/* 语言适配 - 针对较长的文本 */
+.nav-link {
+  transition: all 0.3s ease;
+}
+
+/* 语言特定的导航栏样式 */
+[lang="en"] .nav-links,
+[lang="en-US"] .nav-links {
+  gap: var(--spacing-xs);
+}
+
+[lang="en"] .nav-link,
+[lang="en-US"] .nav-link {
+  font-size: 12px;
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+[lang="ja"] .nav-links,
+[lang="ja-JP"] .nav-links {
+  gap: 2px;
+}
+
+[lang="ja"] .nav-link,
+[lang="ja-JP"] .nav-link {
+  font-size: 12px;
+  padding: var(--spacing-sm) var(--spacing-sm);
+  max-width: 120px;
+}
+
+[lang="zh"] .nav-links,
+[lang="zh-CN"] .nav-links {
+  gap: var(--spacing-sm);
+}
+
+[lang="zh"] .nav-link,
+[lang="zh-CN"] .nav-link {
+  font-size: 14px;
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+/* 紧凑模式 - 当导航栏空间不足时 */
+.nav-links.nav-compact {
+  gap: 2px;
+}
+
+.nav-links.nav-compact .nav-link {
+  font-size: 11px;
+  padding: var(--spacing-sm) var(--spacing-xs);
+  max-width: 80px;
+}
+
+.nav-links.nav-compact .link-text {
+  font-size: 11px;
+}
+
+/* 当文本较长时的样式调整 */
+@media (min-width: 1200px) {
+  .nav-link {
+    max-width: 160px;
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  .nav-links {
+    gap: var(--spacing-sm);
+  }
+}
+
+/* 中等屏幕优化 */
+@media (max-width: 1199px) and (min-width: 1025px) {
+  .nav-link {
+    max-width: 130px;
+    font-size: 12px;
+  }
+
+  .link-text {
+    font-size: 12px;
+  }
+}
+
 /* 响应式设计 */
 @media (max-width: 1024px) {
   .nav-container {
@@ -729,6 +862,16 @@ onBeforeUnmount(() => {
 
   .user-info-inline {
     display: none;
+  }
+
+  .nav-link {
+    max-width: 100px;
+    font-size: 11px;
+    padding: var(--spacing-sm);
+  }
+
+  .link-text {
+    font-size: 11px;
   }
 }
 

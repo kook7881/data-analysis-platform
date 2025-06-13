@@ -346,15 +346,25 @@ const showAlert = (type, message) => {
 // 更新单个设置
 const updateSetting = async (key, value) => {
   try {
+    console.log('更新设置:', key, '=', value)
     await settingsStore.updateSetting(key, value)
-    showAlert('success', t('settings.messages.updated'))
 
-    // 如果是语言设置，立即应用
+    // 如果是语言设置，等待语言应用完成后再显示消息
     if (key === 'language') {
-      // 强制重新渲染页面以应用新语言
+      // 等待语言变化事件
+      const handleLanguageChange = () => {
+        showAlert('success', t('settings.messages.updated'))
+        window.removeEventListener('languageChanged', handleLanguageChange)
+      }
+      window.addEventListener('languageChanged', handleLanguageChange)
+
+      // 设置超时，防止事件未触发
       setTimeout(() => {
-        window.location.reload()
-      }, 500)
+        window.removeEventListener('languageChanged', handleLanguageChange)
+        showAlert('success', '语言设置已更新')
+      }, 1000)
+    } else {
+      showAlert('success', t('settings.messages.updated'))
     }
   } catch (error) {
     console.error('更新设置失败:', error)
